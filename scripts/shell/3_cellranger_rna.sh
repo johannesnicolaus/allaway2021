@@ -21,12 +21,12 @@ cd ${dir_out}
 #    --fastqs=${PBS_O_WORKDIR}/../../data/fastq/rna_neg/Dlxneg_0_1_unknow_flowcell \
 #    --transcriptome=${PBS_O_WORKDIR}/../../data/reference/refdata-gex-mm10-2020-A
 
-#cellranger count --id=pos \
-#    --localcores=64 \
-#    --localvmem=512 \
-#    --localmem=512 \
-#    --fastqs=${PBS_O_WORKDIR}/../../data/fastq/rna_pos/Dlxpos_0_1_unknow_flowcell \
-#    --transcriptome=${PBS_O_WORKDIR}/../../data/reference/refdata-gex-mm10-2020-A
+cellranger count --id=pos \
+    --localcores=64 \
+    --localvmem=512 \
+    --localmem=512 \
+    --fastqs=${PBS_O_WORKDIR}/../../data/fastq/rna_pos/Dlxpos_0_1_unknow_flowcell \
+    --transcriptome=${PBS_O_WORKDIR}/../../data/reference/refdata-gex-mm10-2020-A
 
 
 # create csv file to aggregate both data

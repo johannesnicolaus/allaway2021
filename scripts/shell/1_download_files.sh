@@ -25,3 +25,6 @@ mkdir ${PBS_O_WORKDIR}/../../data/reference
 wget -N https://cf.10xgenomics.com/supp/cell-exp/refdata-gex-mm10-2020-A.tar.gz -P ${PBS_O_WORKDIR}/../../data/reference
 tar -zxvf ${PBS_O_WORKDIR}/../../data/reference/refdata-gex-mm10-2020-A.tar.gz -C ${PBS_O_WORKDIR}/../../data/reference
 
+# download genome and gtf
+wget -N https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/GRCm38.primary_assembly.genome.fa.gz -P ../../data/reference/
+wget -N https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M25/gencode.vM25.annotation.gtf.gz -P ../../data/reference/
