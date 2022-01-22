@@ -122,7 +122,7 @@ ggsave("results/plots/rna_clustering/variable_features.svg", width = 7, height =
 
 # check number of PC to use for clustering
 ElbowPlot(data_seurat)
-
+ggsave("results/plots/rna_clustering/elbow_plot.svg", width = 7, height = 7)
 
 # use PC 1-15 for clustering
 data_seurat <- FindNeighbors(data_seurat, dims = 1:15)
@@ -142,9 +142,11 @@ ggsave("results/plots/rna_clustering/umap.svg", height = 7, width = 7)
 marker_genes <- FindAllMarkers(data_seurat, logfc.threshold = 0.1) %>%
   as_tibble() %>% filter(cluster == 1) %>% filter(p_val_adj < 0.05)
 
+dir.create("results/data/rna_markers")
+write_csv(marker_genes, "results/data/rna_markers/activated_markers.csv")
+
 # create featureplot
-FeaturePlot(data_seurat, features = marker_genes %>% arrange(desc(avg_log2FC)) %>% slice_head(n = 12) %>% pull(gene))
-
-
+FeaturePlot(data_seurat, features = marker_genes %>% arrange(p_val_adj) %>% slice_head(n = 12) %>% pull(gene))
+ggsave("results/plots/rna_clustering/featureplot.png", height = 10, width = 20)
 
 
